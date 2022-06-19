@@ -1,0 +1,28 @@
+html, body{
+	background-color: #3a7074 !important;
+	color:#ffffff !important;
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+#particles-js {
+	height: 100vh; 
+	width: 100%;
+    position: fixed;
+    z-index: 0;
+}
+
+.first-container{ 
+	display: flex !important;
+	flex-direction: column !important;
+	width: 100% !important;
+	min-height: 100vh !important;
+	height: 100% !important;
+	position: relative !important; 
+	font-size: larger;
+}
+
+.bg-transparent-light{
+	background-color: #f8f9fa66 !important;
+}
