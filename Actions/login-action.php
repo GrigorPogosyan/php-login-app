@@ -18,3 +18,4 @@ function loginActionHandle()
         $_SESSION['status-login'] = 'error';
     }
 }
+
