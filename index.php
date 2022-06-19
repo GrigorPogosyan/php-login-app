@@ -1,5 +1,5 @@
 <?php
-!include 'Database/connection.php';
+include "form-request.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,24 +17,20 @@
 <body>
     <div id="particles-js"></div>
     <div class="first-container">
-        <div class="container m-auto p-5 d-flex justify-content-center align-items-center">
+        <div class="container m-auto p-5 d-flex flex-column justify-content-center align-items-center">
             <div class="m-5 border border-white rounded rounded-lg pt-4 pb-4 pl-5 pr-5 bg-transparent-light">
                 <div class="pt-2 pb-2 pl-3 pr-3">
-                <p class="h1 text-center">Login</p>
-                <br>
-                <form class="w-100">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Usuario</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe tu usuario">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Entrar</button>
-                </form>
+                    <p class="h1 text-center">Login</p>
+                    <br>
+                    <?php
+                    include "./Components/login-form.php"; ?>
                 </div>
             </div>
+            <div id="invisible-1">
+                <div class="alert alert-danger fade-in-div" role="alert">Usuario o contrasenya incorrectos!</div>
+            </div>
+            <?php
+                include "./Components/incorrect-credential-alert.php"; ?>
         </div>
     </div>
     <script src="js/particles.js"></script>
