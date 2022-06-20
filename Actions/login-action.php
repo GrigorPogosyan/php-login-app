@@ -5,17 +5,21 @@ function loginActionHandle()
 {
     global $DB;
     $nombre = $_REQUEST['userinput'];
-    $pass = $_REQUEST['passinput'];
+    $pass = password_hash($_REQUEST['passinput'], PASSWORD_BCRYPT);
+    $sqlSentence = "SELECT * FROM users WHERE nombre = '$nombre'";
+    $user = $DB->query($sqlSentence)->fetchObject();
+    if ($user){
 
-    $sqlSentence = "SELECT * FROM users WHERE nombre = '$nombre' AND password = '$pass'";
-    $result = $DB->query($sqlSentence)->fetchAll();
+        if (password_verify($user->password,$pass)){
+            $_SESSION['user'] = $nombre;
+            session_start();
+            header("Location:./me.php");
+        }
+         else {
+            $_SESSION['status-login'] = 'error';
+        }
 
-    if (count($result) == 1) {
-        $_SESSION['user'] = $nombre;
-        session_start();
-        header("Location:./me.php");
-    } else {
-        $_SESSION['status-login'] = 'error';
     }
+    
 }
 
