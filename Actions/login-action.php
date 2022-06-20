@@ -8,18 +8,13 @@ function loginActionHandle()
     $pass = password_hash($_REQUEST['passinput'], PASSWORD_BCRYPT);
     $sqlSentence = "SELECT * FROM users WHERE nombre = '$nombre'";
     $user = $DB->query($sqlSentence)->fetchObject();
-    if ($user){
-
-        if (password_verify($user->password,$pass)){
-            $_SESSION['user'] = $nombre;
-            session_start();
-            header("Location:./me.php");
-        }
-         else {
-            $_SESSION['status-login'] = 'error';
-        }
-
+    if ($user and password_verify($user->password, $pass)) {
+        $_SESSION['user'] = $nombre;
+        session_start();
+        header("Location:./me.php");
     }
-    
+    else {
+        $_SESSION['status-login'] = "error";
+    } 
 }
-
+    
