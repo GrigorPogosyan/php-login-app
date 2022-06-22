@@ -1,5 +1,8 @@
 <?php
 include "./Database/connection.php";
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 function loginActionHandle()
 {
@@ -10,11 +13,19 @@ function loginActionHandle()
     $user = $DB->query($sqlSentence)->fetchObject();
     if ($user and password_verify($user->password, $pass)) {
         $_SESSION['user'] = $nombre;
-        session_start();
-        header("Location:./me.php");
+        $response = array(
+            'status' => 'success',
+            'message' => 'Login correcto'
+        );
+        echo json_encode($response);
+        
     }
     else {
-        $_SESSION['status-login'] = "error";
+        $response = array(
+            'status' => 'error',
+            'message' => 'Login incorrecto'
+        );
+        echo json_encode($response);
     } 
 }
     

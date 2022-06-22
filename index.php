@@ -1,7 +1,5 @@
 <?php
-include "Middlewares/authentication.php";
-include "form-request.php";
-?>
+include "Middlewares/authentication.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +11,7 @@ include "form-request.php";
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -27,11 +26,35 @@ include "form-request.php";
                     include "./Components/login-form.php"; ?>
                 </div>
             </div>
-            <div id="invisible-1">
-                <div class="alert alert-danger fade-in-div" role="alert">Usuario o contrasenya incorrectos!</div>
+            <div id="oculto" class="invisible-1">
+                <div id="alert" class="alert alert-danger" role="alert">Usuario o contrasenya incorrectos!</div>
             </div>
-            <?php
-                include "./Components/incorrect-credential-alert.php"; ?>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $('#form').on('submit', function(event) {
+                        event.preventDefault();
+                        $('#oculto').addClass('invisible-1');
+                        $('#alert').removeClass('fade-in-div');
+                        $.ajax({
+                            type: "POST",
+                            url: 'form-request.php',
+                            data: $(this).serialize(),
+                            success: function(response) {
+                                var jsonData = JSON.parse(response); // Parse the JSON into a JavaScript object
+                                if (jsonData.status == "success") {
+                                    location.href = 'me.php';
+                                } else {
+                                    $('#oculto').removeClass('invisible-1');
+                                    $('#alert').addClass('fade-in-div');
+                                    $('#passinput-js').val("");
+                                }
+                            }
+
+
+                        });
+                    });
+                });
+            </script>
         </div>
     </div>
     <script src="js/particles.js"></script>

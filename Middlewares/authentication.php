@@ -1,6 +1,7 @@
 <?php
-session_start();
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 if (!isset($_SESSION['user']) || is_null($_SESSION['user'])) {
     if (getLastSlug() != 'index.php') {
         header("Location:index.php");
