@@ -63,3 +63,12 @@ html, body{
 	0% { opacity: 0; }
 	100% { opacity: 1; }
   }
+
+.nav-bg {
+	background-color: #2cbfbc61
+}
+
+nav > * {
+	color: #ffffff;
+	font-style: oblique;
+}

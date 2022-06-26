@@ -1,4 +1,4 @@
-<?php 
+<?php
 include "./Middlewares/authentication.php";
 include "form-request.php"; ?>
 <!DOCTYPE html>

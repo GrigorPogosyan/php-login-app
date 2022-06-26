@@ -3,11 +3,18 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 if (!isset($_SESSION['user']) || is_null($_SESSION['user'])) {
-    if (getLastSlug() != 'index.php') {
-        header("Location:index.php");
+    if (getLastSlug() == 'register.php') {
+        return;
+    } else {
+        if (getLastSlug() != 'index.php') {
+            header("Location:index.php");
+        }
     }
 } else {
     if (getLastSlug() != 'me.php') {
+        header("Location:me.php");
+    }
+    if (getLastSlug() == "register.php") {
         header("Location:me.php");
     }
 }

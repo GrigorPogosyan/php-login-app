@@ -1,3 +1,5 @@
+<p class="h1 text-center">Login</p>
+<br>
 <form class="w-100" method="POST" id="form">
     <input type="hidden" name="action" value="login">
     <div class="form-group">

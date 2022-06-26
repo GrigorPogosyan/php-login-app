@@ -17,46 +17,23 @@ include "Middlewares/authentication.php"; ?>
 <body>
     <div id="particles-js"></div>
     <div class="first-container">
+        <?php include "Components/main-nav-bar.php"; ?>
         <div class="container m-auto p-5 d-flex flex-column justify-content-center align-items-center">
             <div class="m-5 border border-white rounded rounded-lg pt-4 pb-4 pl-5 pr-5 bg-transparent-light">
                 <div class="pt-2 pb-2 pl-3 pr-3">
-                    <p class="h1 text-center">Login</p>
-                    <br>
+                    <div class="section-auth-js">
                     <?php
                     include "./Components/login-form.php"; ?>
+                    </div>
                 </div>
             </div>
             <div id="oculto" class="invisible-1">
                 <div id="alert" class="alert alert-danger" role="alert">Usuario o contrasenya incorrectos!</div>
             </div>
-            <script type="text/javascript">
-                $(document).ready(function() {
-                    $('#form').on('submit', function(event) {
-                        event.preventDefault();
-                        $('#oculto').addClass('invisible-1');
-                        $('#alert').removeClass('fade-in-div');
-                        $.ajax({
-                            type: "POST",
-                            url: 'form-request.php',
-                            data: $(this).serialize(),
-                            success: function(response) {
-                                var jsonData = JSON.parse(response); // Parse the JSON into a JavaScript object
-                                if (jsonData.status == "success") {
-                                    location.href = 'me.php';
-                                } else {
-                                    $('#oculto').removeClass('invisible-1');
-                                    $('#alert').addClass('fade-in-div');
-                                    $('#passinput-js').val("");
-                                }
-                            }
-
-
-                        });
-                    });
-                });
-            </script>
         </div>
     </div>
+    <script type="text/javascript" src="js/login-form-submit.js"></script>
+    <script type="text/javascript" src="js/nav-actions.js"></script>
     <script src="js/particles.js"></script>
     <script src="js/particulas.js"></script>
 </body>
