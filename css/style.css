@@ -72,3 +72,12 @@ nav > * {
 	color: #ffffff;
 	font-style: oblique;
 }
+
+.s-1{
+	font-size: 75%;
+}
+
+#href-signup:hover{
+	cursor:pointer;
+	text-decoration: underline;
+}
