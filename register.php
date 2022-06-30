@@ -19,8 +19,8 @@ include "Middlewares/authentication.php"; ?>
     <div class="first-container">
         <div class="container m-auto p-5 d-flex flex-column justify-content-center align-items-center">
             <div class="m-5 border border-white rounded rounded-lg pt-4 pb-4 pl-5 pr-5 bg-transparent-light">
-                <div class="pt-2 pb-2 pl-3 pr-3">
-                    <div class="section-auth-js">
+                <div class="pt-3 pb-3 pl-2 pr-2">
+                    <div>
                     <?php
                     include "./Components/signup-form.php"; ?>
                     </div>
@@ -31,8 +31,6 @@ include "Middlewares/authentication.php"; ?>
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="js/login-form-submit.js"></script>
-    <script type="text/javascript" src="js/nav-actions.js"></script>
     <script src="js/particles.js"></script>
     <script src="js/particulas.js"></script>
 </body>
