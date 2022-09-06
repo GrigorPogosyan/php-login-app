@@ -7,8 +7,8 @@
         <input name="userinput" type="text" class="form-control" id="userinput" placeholder="Usuario" required>
     </div>
     <div class="form-group">
-        <label for="passinput">Password</label>
-        <input id="passinput-js" name="passinput" type="password" class="form-control" id="passinput" placeholder="Password" required>
+        <label for="passinput">Contraseña</label>
+        <input id="passinput-js" name="passinput" type="password" class="form-control" id="passinput" placeholder="Contraseña" required>
     </div>
     <button id="form-submit-js" type="submit" class="btn btn-primary w-100">Entrar</button>
     <div>
