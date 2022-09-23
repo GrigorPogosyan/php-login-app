@@ -12,6 +12,7 @@ function loginActionHandle()
         $_SESSION['user'] = $nombre;
         session_start();
         header("Location:./me.php");
+        $_SESSION['status-login'] = "correct";
     }
     else {
         $_SESSION['status-login'] = "error";
